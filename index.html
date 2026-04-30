@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0d2d52;
-  --ocean: #1560a0;
-  --sky: #2585d4;
-  --aqua: #4db8e8;
-  --light: #eaf5fb;
+  --navy: #081830;       /* 画像の最暗部：ほぼ黒に近い濃紺 */
+  --ocean: #0f4a9e;      /* 画像の中間ブルー */
+  --sky: #1a75d4;        /* 画像の明るいブルー */
+  --aqua: #4db8e8;       /* 水色アクセント（シアン） */
+  --light: #e6f4fb;
   --white: #ffffff;
-  --yellow: #f5c200;
-  --yellow2: #ffd433;
-  --text: #162233;
-  --gray: #6b7a8d;
-  --gray-light: #f4f7fa;
+  --yellow: #f5c200;     /* 画像のゴールド「もっと多く」 */
+  --yellow2: #ffd633;
+  --text: #0f1f35;
+  --gray: #5c6a7d;
+  --gray-light: #f2f6fa;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,7 +42,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(13,45,82,0.97);
+  background: rgba(5,15,30,0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
@@ -70,7 +70,7 @@ header {
 /* ===== HERO ===== */
 .hero {
   min-height: 100svh;
-  background: linear-gradient(160deg, #08192e 0%, #0f3d70 55%, #1660a8 100%);
+  background: linear-gradient(160deg, #05101f 0%, #0c2d5e 45%, #1058a0 75%, #1a6bbf 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,8 +84,9 @@ header {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(77,184,232,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(245,194,0,0.07) 0%, transparent 55%);
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,107,191,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(245,194,0,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 50%, rgba(77,184,232,0.08) 0%, transparent 50%);
 }
 
 .hero::after {
@@ -108,9 +109,9 @@ header {
 
 .hero-badge {
   display: inline-block;
-  background: rgba(77,184,232,0.15);
-  border: 1px solid rgba(77,184,232,0.45);
-  color: var(--aqua);
+  background: rgba(245,194,0,0.12);
+  border: 1px solid rgba(245,194,0,0.5);
+  color: var(--yellow);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -131,7 +132,8 @@ header {
 
 .hero h1 em {
   font-style: normal;
-  color: var(--aqua);
+  color: var(--yellow);
+  text-shadow: 0 0 20px rgba(245,194,0,0.4);
 }
 
 .hero-sub {
@@ -260,27 +262,43 @@ section { padding: 72px 20px; }
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sky), var(--aqua));
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--sky) 60%, var(--aqua) 100%);
+  border-radius: 16px 16px 0 0;
 }
 
 .feature-head {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 .feature-num {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--sky);
-  background: rgba(37,133,212,0.08);
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--ocean) 0%, var(--sky) 100%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(15,74,158,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  position: relative;
+}
+/* ゴールドリング */
+.feature-num::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow);
+  opacity: 0.7;
 }
 
 .feature-icon {
@@ -373,7 +391,7 @@ section { padding: 72px 20px; }
 
 /* ===== COMMISSION ===== */
 .commission {
-  background: linear-gradient(155deg, #0a2040 0%, #1560a0 100%);
+  background: linear-gradient(155deg, #05101f 0%, #0c2d5e 50%, #0f4a9e 100%);
   position: relative;
   overflow: hidden;
 }
@@ -392,10 +410,11 @@ section { padding: 72px 20px; }
 .commission-visual {
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.13);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.22);
   border-radius: 20px;
   padding: 36px 24px;
+  backdrop-filter: blur(4px);
 }
 
 .pie-wrap {
@@ -423,13 +442,15 @@ section { padding: 72px 20px; }
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   font-size: 2rem;
-  color: var(--aqua);
+  color: var(--yellow);
+  text-shadow: 0 0 16px rgba(245,194,0,0.5);
   line-height: 1;
 }
 
 .pie-label .small {
   font-size: 0.68rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
   margin-top: 4px;
 }
 
@@ -444,13 +465,14 @@ section { padding: 72px 20px; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.7);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
 }
 
 .legend-dot {
-  width: 10px; height: 10px;
-  border-radius: 2px;
+  width: 12px; height: 12px;
+  border-radius: 3px;
   flex-shrink: 0;
 }
 
@@ -465,8 +487,9 @@ section { padding: 72px 20px; }
   align-items: center;
   gap: 10px;
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.85);
-  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 8px;
   padding: 12px 16px;
 }
@@ -513,7 +536,7 @@ section { padding: 72px 20px; }
 .cta-section { background: #fff; }
 
 .cta-box {
-  background: linear-gradient(150deg, #0a2040, #1560a0);
+  background: linear-gradient(150deg, #05101f, #0c2d5e 50%, #1058a0);
   border-radius: 20px;
   padding: 48px 24px;
   text-align: center;
@@ -526,8 +549,8 @@ section { padding: 72px 20px; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 0% 100%, rgba(77,184,232,0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(245,194,0,0.12) 0%, transparent 60%);
+    radial-gradient(ellipse 70% 60% at 0% 100%, rgba(26,107,191,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(245,194,0,0.15) 0%, transparent 60%);
 }
 
 .cta-box h2 {
@@ -592,7 +615,7 @@ section { padding: 72px 20px; }
 
 /* ===== FOOTER ===== */
 footer {
-  background: var(--navy);
+  background: #060e1c;
   color: rgba(255,255,255,0.45);
   text-align: center;
   padding: 28px 20px;
@@ -607,7 +630,7 @@ footer strong { color: rgba(255,255,255,0.75); }
   bottom: 0; left: 0; right: 0;
   z-index: 150;
   padding: 12px 16px;
-  background: rgba(13,45,82,0.97);
+  background: rgba(5,15,30,0.97);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255,255,255,0.08);
   display: flex;
@@ -869,18 +892,26 @@ footer strong { color: rgba(255,255,255,0.75); }
       <div class="pie-wrap">
         <div class="pie-svg-wrap">
           <svg width="180" height="180" viewBox="0 0 180 180">
-            <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="24"/>
+            <!-- ベーストラック（薄白） -->
+            <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="26"/>
+            <!-- HPH 30%（半透明白） -->
             <circle cx="90" cy="90" r="72" fill="none"
-              stroke="rgba(77,184,232,0.38)" stroke-width="24"
+              stroke="rgba(255,255,255,0.35)" stroke-width="26"
+              stroke-linecap="round"
               stroke-dasharray="135.7 316.7"
               stroke-dashoffset="0"
               transform="rotate(-90 90 90)"/>
+            <!-- 御社 70%（ゴールド） -->
             <circle cx="90" cy="90" r="72" fill="none"
-              stroke="#4db8e8" stroke-width="24"
+              stroke="#f5c200" stroke-width="26"
+              stroke-linecap="round"
               stroke-dasharray="316.7 452.4"
               stroke-dashoffset="-135.7"
               transform="rotate(-90 90 90)"/>
-            <circle cx="90" cy="90" r="58" fill="rgba(10,32,64,0.65)"/>
+            <!-- 中央塗りつぶし -->
+            <circle cx="90" cy="90" r="56" fill="rgba(5,16,31,0.85)"/>
+            <!-- ゴールドの輝きリング -->
+            <circle cx="90" cy="90" r="56" fill="none" stroke="rgba(245,194,0,0.15)" stroke-width="1"/>
           </svg>
           <div class="pie-label">
             <div class="big">70%</div>
@@ -889,10 +920,10 @@ footer strong { color: rgba(255,255,255,0.75); }
         </div>
         <div class="pie-legend">
           <div class="legend-item">
-            <span class="legend-dot" style="background:var(--aqua)"></span>御社 70%
+            <span class="legend-dot" style="background:var(--yellow)"></span>御社 70%
           </div>
           <div class="legend-item">
-            <span class="legend-dot" style="background:rgba(77,184,232,0.38)"></span>HPH 30%
+            <span class="legend-dot" style="background:rgba(255,255,255,0.35)"></span>HPH 30%
           </div>
         </div>
       </div>
@@ -970,7 +1001,13 @@ footer strong { color: rgba(255,255,255,0.75); }
   <span style="margin-top:8px;display:block;font-size:0.72rem;">© 2024 HPH Inc. All Rights Reserved.</span>
 </footer>
 
-
+<!-- STICKY BOTTOM CTA (mobile only) -->
+<div class="sticky-cta">
+  <div class="sticky-cta-inner">
+    <a href="mailto:inc.hph0201@gmail.com" class="sticky-mail">📧 メールで問い合わせ</a>
+    <a href="tel:0787548576" class="sticky-tel">📞 電話する</a>
+  </div>
+</div>
 
 <script>
 // Desktop nav show
